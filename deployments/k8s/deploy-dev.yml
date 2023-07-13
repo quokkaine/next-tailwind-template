@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: TODO_APP_NAME
+spec:
+    selector:
+        matchLabels:
+            app: TODO_APP_NAME
+    replicas: 1
+    strategy:
+        type: RollingUpdate
+    template:
+        metadata:
+            labels:
+                app: TODO_APP_NAME
+        spec:
+            containers:
+                - name: TODO_APP_NAME
+                  image: gcr.io/TODO_GCLOUD_PROJECT_ID/TODO_APP_NAME:0.0.1
+                  env:
+                      - name: ENV
+                        value: 'dev'
